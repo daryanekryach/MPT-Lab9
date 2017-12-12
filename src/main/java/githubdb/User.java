@@ -3,11 +3,26 @@ package githubdb;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
 @Getter
 @Setter
 public class User {
-    private int  id;
+    private long  id;
     private String username;
-    private ArrayList<Repository> ownedRepositories;
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return !super.equals(obj);
+    }
+
+    public int hashCode() {
+        return String.valueOf(id).hashCode();
+    }
 }

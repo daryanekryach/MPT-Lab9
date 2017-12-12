@@ -3,18 +3,20 @@ package githubdb;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 @Getter @Setter
 public class Repository {
-    private int id;
+    private long id;
     private String name;
     private User owner;
     private String description;
     private Language language;
-    private ArrayList<Contributor> contributors;
+    private LinkedHashSet<User> contributors;
 
     public Repository() {
-        contributors = new ArrayList<>();
+        contributors = new LinkedHashSet<>();
     }
 
 }

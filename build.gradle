@@ -17,6 +17,7 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
     compile group: 'org.json', name: 'json', version: '20170516'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
     compileOnly 'org.projectlombok:lombok:1.16.18'
 }
 

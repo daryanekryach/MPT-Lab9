@@ -1,65 +1,61 @@
 package githubdb;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
+@Getter
+@Setter
 public class DataHandler {
-/*    private HashMap<Integer, Repository> repositories;
-    private HashMap<Integer, String> languages;
-    private HashMap<Integer, String> users;
-    private HashMap<Integer, Repository> repositories_owners;
-    private HashMap<Integer, Contributor> contributors;
+    private LinkedHashSet<Repository> repositories;
+    private LinkedHashSet<Language> languages;
+    private LinkedHashSet<User> users;
 
     public DataHandler() {
-        repositories = new HashMap<>();
-        languages = new HashMap<>();
-        users = new HashMap<>();
-        repositories_owners = new HashMap<>();
-        contributors = new HashMap<>();
+        repositories = new LinkedHashSet<>();
+        languages = new LinkedHashSet<>();
+        users = new LinkedHashSet<>();
     }
 
-    public void handleData(ArrayList<Repository> repositoriesArray) {
-        for (Repository repo : repositoriesArray) {
-            addToRepositories(repo);
-            addToContributors(repo.getContributors());
-            addToLanguages(repo.getLanguage());
-            addToRepositoryOwners();
-            addToUsers(repo.getOwner());
+    public void handleData(Repository repository) {
+        repositories.add(repository);
+        users.add(repository.getOwner());
+        for (User contributor : repository.getContributors()) {
+            users.add(contributor);
         }
     }
 
-    private void addToRepositories(Repository repository) {
-        if (!repositories.containsValue(repository)) {
-            repositories.put(repositories.size() + 1, repository);
+    public boolean repositoryAlreadyExists(Repository repository) {
+        return repositories.contains(repository);
+    }
+
+    public boolean languageAlreadyExists(Language language) {
+        boolean result = false;
+        for (Language lang : languages) {
+            result = lang.getName().equals(language.getName());
+            if (result) break;
+        }
+        return result;
+    }
+
+    public void addToLanguages(Language language) {
+        if (!languageAlreadyExists(language)) {
+            language.setId(languages.size() + 1);
+            languages.add(language);
         }
     }
 
-    private void addToLanguages(String language) {
-        if (!languages.containsValue(language)) {
-            languages.put(languages.size() + 1, language);
-        }
-    }
-
-    private void addToUsers(String user) {
-        if (!users.containsValue(user)) {
-            users.put(languages.size() + 1, user);
-        }
-    }
-
-    private void addToContributors(ArrayList<Contributor> contributors) {
-        for (Contributor user : contributors ) {
-            addToUsers(user.);
-            if (!users.containsValue(user)) {
-                users.put(languages.size() + 1, user);
+    public int getLanguageIndex(Language language) {
+        int id = 0;
+        for (Language lang : languages) {
+            if (lang.getName().equals(language.getName())) {
+                id = lang.getId();
+                break;
             }
         }
-        addToUsers(user);
-        if (!users.containsValue(user)) {
-            users.put(languages.size() + 1, user);
-        }
+        return id;
     }
-
-    private void addToRepositoryOwners() {
-
-    }*/
 }
