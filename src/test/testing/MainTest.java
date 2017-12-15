@@ -23,4 +23,8 @@ public class MainTest {
         assertEquals(targetException.getClass(), InstantiationException.class);
     }
 */
+    @Test
+    public void executeProgram(){
+        assertTrue(Main.executeProgram());
+    }
 }

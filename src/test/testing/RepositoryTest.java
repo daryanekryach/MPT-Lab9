@@ -61,25 +61,6 @@ public class RepositoryTest {
         assertEquals(field.get(repository), name);
     }
 
-   /* @Test
-    public void setOwner() throws NoSuchFieldException, IllegalAccessException {
-        final Repository repository = new Repository();
-        repository.setOwner(user);
-        final Field field = repository.getClass().getDeclaredField("owner");
-        field.setAccessible(true);
-        assertEquals(field.get(repository), user);
-    }
-
-    @Test
-    public void getOwner() throws NoSuchFieldException, IllegalAccessException {
-        final Repository repository = new Repository();
-        final Field field = repository.getClass().getDeclaredField("owner");
-        field.setAccessible(true);
-        field.set(repository, user);
-        assertEquals(repository.getOwner(), user);
-    }
-*/
-
     @Test
     public void getDescription() throws NoSuchFieldException, IllegalAccessException {
         final Repository repository = new Repository();

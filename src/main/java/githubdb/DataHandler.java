@@ -6,7 +6,6 @@ import lombok.Setter;
 import java.util.LinkedHashSet;
 
 @Getter
-@Setter
 public class DataHandler {
     private LinkedHashSet<Repository> repositories;
     private LinkedHashSet<Language> languages;
