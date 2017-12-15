@@ -2,8 +2,6 @@ package githubdb;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 import org.joda.time.*;
 

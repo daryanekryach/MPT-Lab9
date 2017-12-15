@@ -3,8 +3,6 @@ package githubdb;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 
 @Getter
@@ -20,12 +18,13 @@ public class DataHandler {
         users = new LinkedHashSet<>();
     }
 
-    public void handleData(Repository repository) {
+    public boolean handleData(Repository repository) {
         repositories.add(repository);
         users.add(repository.getOwner());
         for (User contributor : repository.getContributors()) {
             users.add(contributor);
         }
+        return true;
     }
 
     public boolean repositoryAlreadyExists(Repository repository) {

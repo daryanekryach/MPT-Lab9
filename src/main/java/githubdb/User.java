@@ -3,8 +3,6 @@ package githubdb;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 @Getter
 @Setter

@@ -30,7 +30,7 @@ public class GitHubAPI {
      * @return CloseableHttpResponse response
      * @throws IOException
      */
-    private void requestRepositories(String dateFrom, String dateTo) throws IOException {
+    private void requestRepositories(String dateFrom, String dateTo) {
         try {
             int page = 1;
             URIBuilder URI;
@@ -48,7 +48,6 @@ public class GitHubAPI {
                         .setParameter("page", String.valueOf(page))
                         .setParameter("per_page", "100");
                 httpGet = new HttpGet(URI.toString());
-                System.out.println(URI.toString());
                 httpGet.addHeader("Authorization", "token " + TOKEN);
                 httpGet.addHeader("Accept", "application/vnd.github.cloak-preview+json");
                 response = httpClient.execute(httpGet);
@@ -58,7 +57,7 @@ public class GitHubAPI {
                     break;
                 }
                 String repositoryData = EntityUtils.toString(httpEntity);
-                if (repositoryData.equals("[]")) break;
+                if ("[]".equals(repositoryData)) break;
                 parsedRepositories = parser.parseRepositoryJson(repositoryData);
                 for (Repository repo : parsedRepositories) {
                     if (!data.repositoryAlreadyExists(repo)) {
@@ -69,7 +68,7 @@ public class GitHubAPI {
                 page++;
                 response.close();
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error occurred while searching repositories " + e.getMessage());
         }
     }
@@ -81,8 +80,7 @@ public class GitHubAPI {
      * @return
      * @throws IOException
      */
-    private LinkedHashSet<User> requestRepositoryCommits(Repository repository)
-            throws IOException {
+    private LinkedHashSet<User> requestRepositoryCommits(Repository repository) {
         LinkedHashSet<User> contributors = new LinkedHashSet<>();
         try {
             int page = 1;
@@ -100,7 +98,6 @@ public class GitHubAPI {
                         .setParameter("page", String.valueOf(page))
                         .setParameter("per_page", "100");
                 httpGet = new HttpGet(URI.toString());
-                System.out.println(URI.toString());
                 httpGet.addHeader("Authorization", "token " + TOKEN);
                 response = httpClient.execute(httpGet);
                 httpEntity = response.getEntity();
@@ -109,25 +106,26 @@ public class GitHubAPI {
                     break;
                 }
                 String contributionData = EntityUtils.toString(httpEntity);
-                if (contributionData.equals("[]")) break;
+                if ("[]".equals(contributionData)) break;
                 contributors = parser.parseRepositoryContributionJson(contributionData);
                 page++;
                 response.close();
                 return contributors;
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error occurred while searching contributons: " + e.getMessage());
-        } finally {
-            return contributors;
         }
+        return contributors;
     }
 
-    public void getGitHubData(DateTime date, int weekPeriod) throws IOException {
-        for (int i = 1; i <= weekPeriod; i++) {
-            requestRepositories(date.toString("y-MM-dd"),
-                    date.plusDays(6).toString("y-MM-dd"));
-            date = date.plusDays(7);
-        }
+    public boolean getGitHubData(DateTime date, int weekPeriod) {
+        DateTime iteratedate = date;
+            for (int i = 1; i <= weekPeriod; i++) {
+                requestRepositories(iteratedate.toString("y-MM-dd"),
+                        iteratedate.plusDays(6).toString("y-MM-dd"));
+                iteratedate = iteratedate.plusDays(7);
+            }
+        return true;
     }
 
     public DataHandler getData() {
