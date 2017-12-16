@@ -19,8 +19,7 @@ public class PostgreSQLTest  {
         postgre = new PostgreSQL();
         final Field field = postgre.getClass().getDeclaredField("connection");
         field.setAccessible(true);
-        Connection connection = (Connection)field.get(postgre);
-        assertNotNull(connection);
+        assertNotNull(field.get(postgre));
     }
 
     @Test
