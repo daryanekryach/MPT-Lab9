@@ -15,6 +15,7 @@ before_script:
     - export GRADLE_HOME=$PWD/gradle-2.14
     - export PATH=$GRADLE_HOME/bin:$PATH
     - psql -c "CREATE DATABASE GitHubData;" -U postgres
+    - psql -c "ALTER USER 'postgres' WITH PASSWORD '12345678';" -U postgres
 services:
   - postgresql
 
