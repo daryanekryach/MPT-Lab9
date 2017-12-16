@@ -15,3 +15,38 @@
 > Execution time is 849102 ms or 14 min 9 sec<br/>Used memory is 10.601783752441406 mb
 ### Inserting data to PostgreSQL
 > Execution time is 86563 ms or 1 min 26 sec<br/>Used memory is 9.328826904296875 mb
+
+### First 10 most contibution-wise active users 
+1. invalid-email-address - 29
+2. gitter-badger - 19
+3. msftgits - 16
+4. microsoftopensource - 15
+5. cclauss - 14
+6. CoderSavior - 13
+7. mikeal - 10
+8. llSourcell - 10
+9. angular-cli - 8
+10. stackhou - 8
+### First 10 users who own the most repositories
+1. Microsoft - 16
+2. CoderSavior - 13
+3. google - 12
+4. llSourcell - 10
+5. mikeal - 9
+6. awslabs - 9
+7. stackhou - 8
+8. yutao331763646 - 7
+9. keijiro - 7
+10. fossasia - 6
+### 10 most popular languages
+1. JavaScript - 843
+2. Python - 536
+3. none - 367
+4. Java - 323
+5. Go - 224
+6. C++ - 163
+7. Swift - 155
+8. C# - 145
+9. PHP - 144
+10. HTML - 126
+### THE MOST COMMITTED REPOSITORY IS hacktoberfest WITH 100 COMMITS
