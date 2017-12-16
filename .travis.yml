@@ -14,7 +14,7 @@ before_script:
     - unzip gradle-2.14-bin.zip
     - export GRADLE_HOME=$PWD/gradle-2.14
     - export PATH=$GRADLE_HOME/bin:$PATH
-    - psql -U postgres -W 1234567 GitHubData
+    - psql -U postgres -W 12345678
 services:
   - postgresql
 
