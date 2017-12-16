@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testing.DataHandlerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-12-16T11:54:41" hostname="Anvym6" time="0.154">
+  <properties/>
+  <testcase name="getLanguage" classname="testing.DataHandlerTest" time="0.147"/>
+  <testcase name="getLanguages" classname="testing.DataHandlerTest" time="0.001"/>
+  <testcase name="getUsers" classname="testing.DataHandlerTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

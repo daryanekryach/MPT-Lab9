@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testing.UserTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2017-12-16T11:59:09" hostname="Anvym6" time="0.007">
+  <properties/>
+  <testcase name="getId" classname="testing.UserTest" time="0.0"/>
+  <testcase name="setId" classname="testing.UserTest" time="0.001"/>
+  <testcase name="equalsTest" classname="testing.UserTest" time="0.001"/>
+  <testcase name="toStringTest" classname="testing.UserTest" time="0.0"/>
+  <testcase name="hashCodeTest" classname="testing.UserTest" time="0.0"/>
+  <testcase name="setUsername" classname="testing.UserTest" time="0.0"/>
+  <testcase name="getUsername" classname="testing.UserTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

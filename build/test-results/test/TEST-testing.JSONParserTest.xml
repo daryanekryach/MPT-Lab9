@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testing.JSONParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-12-16T11:59:00" hostname="Anvym6" time="0.21">
+  <properties/>
+  <testcase name="parseRepositoryContributionJsonTest" classname="testing.JSONParserTest" time="0.207"/>
+  <testcase name="parseRepositoryJsonTest" classname="testing.JSONParserTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
