@@ -4,7 +4,6 @@ import githubdb.*;
 import org.joda.time.DateTime;
 import org.junit.*;
 
-import java.io.IOException;
 import java.lang.reflect.*;
 
 import static org.junit.Assert.*;

@@ -104,17 +104,87 @@ public class PostgreSQL implements AutoCloseable {
     //endregion
 
     public void getReposContributedByUser() {
+        try {
+            String query = "SELECT users.login, count(contributors.repo_id) FROM (contributors " +
+                    "INNER JOIN users ON contributors.contributor_id = users.user_id)" +
+                    "GROUP BY users.login " +
+                    "ORDER BY COUNT(contributors.repo_id) DESC " +
+                    "LIMIT 10;";
+
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            System.out.println("USERS WHO CONTRIBUTED THE MOST");
+            int i = 0;
+            while (rs.next()) {
+                System.out.println("" + (i + 1) + ". " + rs.getString("login") + " - " +
+                        rs.getInt("count"));
+                i++;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error occurred while selectin data from database " + e.getMessage());
+        }
     }
 
     public void getReposOwnedByUser() {
+        try {
+            String query = "SELECT users.login,count(repositories.name) FROM (repository_owners " +
+                    "INNER JOIN users ON repository_owners.owner_id = users.user_id)" +
+                    "INNER JOIN repositories ON repository_owners.repo_id = repositories.repo_id " +
+                    "GROUP BY users.login\n" +
+                    "ORDER BY COUNT(repositories.name) DESC " +
+                    "LIMIT 10";
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            System.out.println("USERS WHO OWN THE MOST REPOSITORIES");
+            int i = 0;
+            while (rs.next()) {
+                System.out.println("" + (i + 1) + ". " + rs.getString("login") + " - " +
+                        rs.getInt("count"));
+                i++;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error occurred while selectin data from database " + e.getMessage());
+        }
     }
 
-    public void getUserMostUsedLanguage() {
+    public void getMostCommitedRepository() {
+        try {
+            String query = "SELECT repositories.name, count(repositories.name) FROM contributors " +
+                    "INNER JOIN repositories ON contributors.repo_id = repositories.repo_id " +
+                    "GROUP BY repositories.name " +
+                    "ORDER BY COUNT(repositories.name) DESC " +
+                    "LIMIT 1";
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                System.out.println("THE MOST COMMITTED REPOSITORY IS " + rs.getString("name") + " WITH " +
+                        rs.getInt("count") + " COMMITS");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error occurred while selectin data from database " + e.getMessage());
+        }
     }
 
     public void getMostPopularLanguages() {
+        try {
+            String query = "SELECT * FROM (SELECT DISTINCT ON (languages.language)  languages.language, " +
+                    "count(languages.language) FROM repositories " +
+                    "INNER JOIN languages ON repositories.lang_id = languages.lang_id " +
+                    "GROUP BY languages.language) langs " +
+                    "ORDER BY COUNT(langs) DESC " +
+                    "LIMIT 10";
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            System.out.println("MOST POPULAR LANGUAGES");
+            int i = 0;
+            while (rs.next()) {
+                System.out.println("" + (i + 1) + ". " + rs.getString("language") + " - " +
+                        rs.getInt("count"));
+                i++;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error occurred while selectin data from database " + e.getMessage());
+        }
     }
 
-    public void get() {
-    }
 }

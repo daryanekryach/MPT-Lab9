@@ -110,7 +110,6 @@ public class GitHubAPI {
                 contributors = parser.parseRepositoryContributionJson(contributionData);
                 page++;
                 response.close();
-                return contributors;
             }
         } catch (IOException e) {
             System.out.println("Error occurred while searching contributons: " + e.getMessage());

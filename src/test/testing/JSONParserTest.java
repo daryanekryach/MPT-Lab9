@@ -15,11 +15,10 @@ public class JSONParserTest {
     private JSONParser parser;
     private String repositoryJSON;
     private String contributionJSON;
-    private DataHandler data;
 
     @Before
     public void init() {
-        data = new DataHandler();
+        DataHandler data = new DataHandler();
         parser = new JSONParser(data);
         repositoryJSON = contributionJSON = "";
         try (Stream<String> stream = Files.lines(Paths.get("testRepoJSON.txt"))) {
