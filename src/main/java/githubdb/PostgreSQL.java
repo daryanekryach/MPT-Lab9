@@ -103,7 +103,7 @@ public class PostgreSQL implements AutoCloseable {
     }
     //endregion
 
-    public void getReposContributedByUser() {
+    public boolean getReposContributedByUser() {
         try {
             String query = "SELECT users.login, count(contributors.repo_id) FROM (contributors " +
                     "INNER JOIN users ON contributors.contributor_id = users.user_id)" +
@@ -123,9 +123,10 @@ public class PostgreSQL implements AutoCloseable {
         } catch (SQLException e) {
             System.out.println("Error occurred while selectin data from database " + e.getMessage());
         }
+        return true;
     }
 
-    public void getReposOwnedByUser() {
+    public boolean getReposOwnedByUser() {
         try {
             String query = "SELECT users.login,count(repositories.name) FROM (repository_owners " +
                     "INNER JOIN users ON repository_owners.owner_id = users.user_id)" +
@@ -145,9 +146,10 @@ public class PostgreSQL implements AutoCloseable {
         } catch (SQLException e) {
             System.out.println("Error occurred while selectin data from database " + e.getMessage());
         }
+        return true;
     }
 
-    public void getMostCommitedRepository() {
+    public boolean getMostCommitedRepository() {
         try {
             String query = "SELECT repositories.name, count(repositories.name) FROM contributors " +
                     "INNER JOIN repositories ON contributors.repo_id = repositories.repo_id " +
@@ -163,9 +165,10 @@ public class PostgreSQL implements AutoCloseable {
         } catch (SQLException e) {
             System.out.println("Error occurred while selectin data from database " + e.getMessage());
         }
+        return true;
     }
 
-    public void getMostPopularLanguages() {
+    public boolean getMostPopularLanguages() {
         try {
             String query = "SELECT * FROM (SELECT DISTINCT ON (languages.language)  languages.language, " +
                     "count(languages.language) FROM repositories " +
@@ -185,6 +188,7 @@ public class PostgreSQL implements AutoCloseable {
         } catch (SQLException e) {
             System.out.println("Error occurred while selectin data from database " + e.getMessage());
         }
+        return true;
     }
 
 }

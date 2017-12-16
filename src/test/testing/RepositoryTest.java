@@ -1,6 +1,8 @@
 package testing;
 
-import githubdb.*;
+import githubdb.Language;
+import githubdb.Repository;
+import githubdb.User;
 import org.junit.Before;
 import org.junit.Test;
 

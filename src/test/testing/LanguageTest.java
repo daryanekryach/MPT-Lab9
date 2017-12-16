@@ -1,11 +1,11 @@
 package testing;
 
-import githubdb.*;
-import org.junit.*;
+import githubdb.Language;
+import org.junit.Test;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class LanguageTest {
 

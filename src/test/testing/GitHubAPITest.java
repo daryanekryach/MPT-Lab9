@@ -1,12 +1,14 @@
 package testing;
 
-import githubdb.*;
+import githubdb.DataHandler;
+import githubdb.GitHubAPI;
 import org.joda.time.DateTime;
-import org.junit.*;
+import org.junit.Test;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GitHubAPITest {
 

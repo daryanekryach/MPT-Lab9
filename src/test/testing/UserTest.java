@@ -1,11 +1,12 @@
 package testing;
 
-import githubdb.*;
-import org.junit.*;
+import githubdb.User;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class UserTest {
     private User userOne;

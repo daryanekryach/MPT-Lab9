@@ -1,7 +1,8 @@
 package testing;
 
 import githubdb.*;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class JSONParserTest {
     private JSONParser parser;
@@ -60,4 +61,5 @@ public class JSONParserTest {
         assertEquals(contributors.toArray()[0], parser.parseRepositoryContributionJson(contributionJSON)
                 .toArray()[0]);
     }
+
 }

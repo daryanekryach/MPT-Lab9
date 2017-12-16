@@ -24,8 +24,13 @@ public class Main {
         Metrics.stop();
         Metrics.getAllMetrics();
         System.out.println("FINISHED INSERTING DATA TO POSTGRESQL");
-        
+
+        System.out.println("STARTING SELECTING DATA FROM POSTGRESQL...");
+        Metrics.start();
         executeQueries();
+        Metrics.stop();
+        Metrics.getAllMetrics();
+        System.out.println("FINISHED SELECTING DATA FROM POSTGRESQL...");
     }
 
 
@@ -42,7 +47,7 @@ public class Main {
         }
     }
 
-    private static boolean executeQueries(){
+    public static boolean executeQueries(){
         try(PostgreSQL postgre = new PostgreSQL()) {
             postgre.getMostPopularLanguages();
             postgre.getReposContributedByUser();
