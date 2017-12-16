@@ -1,9 +1,0 @@
-<dataset>
-    <employee ID="1" NAME="Sara" SALARY="465.00"/>
-    <employee ID="2" NAME="David" SALARY="789.00"/>
-    <employee ID="3" NAME="Mariya" SALARY="711.00"/>
-
-    <employee_progress ID="1" EMPLOYEE_ID="1" PROGRESS="90"/>
-    <employee_progress ID="2" EMPLOYEE_ID="2" PROGRESS="95"/>
-    <employee_progress ID="3" EMPLOYEE_ID="3" PROGRESS="48"/>    
-</dataset>
